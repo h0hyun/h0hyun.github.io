@@ -1,0 +1,105 @@
+
+#include <AddicoreRFID.h>
+#include <SPI.h>
+
+#define  uchar unsigned char
+#define uint  unsigned int
+
+//4 bytes tag serial number, the first 5 bytes for the checksum byte
+uchar serNumA[5];
+
+uchar fifobytes;
+uchar fifoValue;
+
+AddicoreRFID myRFID; // create AddicoreRFID object to control the RFID module
+
+
+const int chipSelectPin = 10;
+const int NRSTPD = 5;
+const int speakerPin = 8;
+
+//Maximum length of the array
+#define MAX_LEN 16
+
+void setup() {                
+   Serial.begin(9600);                        
+ 
+  // start the SPI library:
+  SPI.begin();
+  
+  pinMode(chipSelectPin,OUTPUT);              
+    digitalWrite(chipSelectPin, LOW);         
+  pinMode(NRSTPD,OUTPUT);                    
+    digitalWrite(NRSTPD, HIGH);
+
+  myRFID.AddicoreRFID_Init();  
+}
+
+void loop()
+{
+    uchar i, tmp, checksum1;
+    uchar status;
+        uchar str[MAX_LEN];
+        uchar RC_size;
+        uchar blockAddr;  //Selection operation block address 0 to 63
+        String mynum = "";
+
+        //str[1] = 0x4400;
+
+        
+  //Find tags, return tag type
+  status = myRFID.AddicoreRFID_Request(PICC_REQIDL, str); 
+  if (status == MI_OK)
+  {
+            tone(speakerPin, 2500, 100);
+              Serial.println("RFID tag detected");
+              Serial.print(str[0],BIN);
+            tone(speakerPin, 2500, 100);
+              Serial.print(" , ");
+              Serial.print(str[1],BIN);
+            tone(speakerPin, 2000, 100);
+              Serial.print(" , ");
+              Serial.print(str[2],BIN);
+            Serial.println(" ");
+  }
+
+  //Anti-collision, return tag serial number 4 bytes
+  status = myRFID.AddicoreRFID_Anticoll(str);
+  if (status == MI_OK)
+  {
+            checksum1 = str[0] ^ str[1] ^ str[2] ^ str[3];
+            Serial.println("The tag's number is  : ");
+          //Serial.print(2);
+          Serial.print(str[0]);
+            Serial.print(" , ");
+          Serial.print(str[1],BIN);
+            Serial.print(" , ");
+          Serial.print(str[2],BIN);
+            Serial.print(" , ");
+          Serial.print(str[3],BIN);
+            Serial.print(" , ");
+          Serial.print(str[4],BIN);
+            Serial.print(" , ");
+            Serial.println(checksum1,BIN);
+            
+           
+            if(str[0] == 213)                      
+            {
+                Serial.print("Hello hohyun!\n");
+                tone(speakerPin, 2000,100);
+            } 
+            else if(str[0] == 44) {            
+                Serial.print("Hello mun!\n");
+                tone(speakerPin, 1000,100);
+            }
+            else if(str[0] == 115) {            
+                Serial.print("card\n");
+                tone(speakerPin, 2500,300);
+            }
+            Serial.println();
+            delay(1000);
+  }
+    
+        myRFID.AddicoreRFID_Halt();      
+
+}
