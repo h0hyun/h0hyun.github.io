@@ -1,1 +1,18 @@
-test
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>QRtest</title>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/qrcode.js"></script>
+  <script type="text/javascript" src="js/qrtest.js"></script>
+  <link rel="stylesheet" href="css/qrtest.css" />
+</head>
+<body>
+<!--자료를 넣을 input:text-->
+<input id="text" type="text" value="" style="width:100%" /><br />
+<input id="text" type="text" value="https://hogangnono.com" style="width:80%" /><br />
+<div id="qrcode"></div>
+
+<!--qr코드를 보여주는 div-->
+<div id="qrcode" style="width:100px; height:100px; margin:auto; margin-top:15px;"></div>
+</body>
