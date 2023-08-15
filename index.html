@@ -110,7 +110,7 @@
           <button class="btn btn-primary btn-lg btn-block" type="button" onclick="Check()">QR코드 생성</button>
           <script language ="javascript">
             function Check() {
-              var textBox = document.getElementById("name");  //텍스트의 id값을 받는다
+              var textBox = document.getElementById("name", "birth");  //텍스트의 id값을 받는다
               if (textBox != null) {
                 alert(textBox.value + "님 맞나요?");     //텍스트박스의 value를 받아서 알람
               }
