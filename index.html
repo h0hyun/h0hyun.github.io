@@ -1,18 +1,71 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>QRtest</title>
-  <script type="text/javascript" src="web/jquery.min.js"></script>
-  <script type="text/javascript" src="web/qrcode.js"></script>
-  <script type="text/javascript" src="web/qrtest.js"></script>
-  <link rel="stylesheet" href="css/qrtest.css" />
-</head>
-<body>
-<!--자료를 넣을 input:text-->
-<input id="text" type="text" value="" style="width:100%" /><br />
-<input id="text" type="text" value="https://hogangnono.com" style="width:80%" /><br />
-<div id="qrcode"></div>
+	<title>52사단 예비군</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="web/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="web/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="web/css/ie9.css" /><![endif]-->
+	</head>
+	<div class="login-wrap">
+	<div class="login-html">
+    	<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">안내</label>
+			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">인적사항 작성</label>
+	<div class="login-form">
+		<div class="sign-in-htm">
+			<div class="group">
+				<label for="user" class="label">예비군훈련 입소를 환영합니다.</label>
+				<input id="user" type="text" class="input">
+		</div>
+        <div class="group">
+          <label for="pass" class="label">QR pass 사용법</label>
+          <input id="pass" type="text" class="input">
+        </div>
+        <div class="group">
+          <input id="check" type="checkbox" class="check" checked>
+          <label for="check"><span class="icon"></span> 체크박스 test</label>
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="인적사항 작성하기">
+        </div>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+          <a href="#">수도방위사령부 52보병사단</a>
+        </div>
+      </div>
+      <div class="sign-up-htm">
+        <div class="group">
+          <label for="user" class="label">성명</label>
+          <input id="user" type="text" class="input">
+        </div>
 
-<!--qr코드를 보여주는 div-->
-<div id="qrcode" style="width:100px; height:100px; margin:auto; margin-top:15px;"></div>
-</body>
+				<div class="group">
+					<label for="name" class="label">성명</label>
+					<input id="user" type="text" class="input" name="info_1" placeholder="홍길동">
+				</div>
+
+        <div class="group">
+          <label for="pass" class="label">생년월일</label>
+          <input id="pass" type="number" class="input" data-type="number">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">은행명</label>
+          <input id="pass" type="text" class="input" data-type="text">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">계좌번호</label>
+          <input id="pass" type="text" class="input">
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="확인">
+        </div>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+          <label for="tab-1">안내사항</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
