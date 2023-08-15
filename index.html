@@ -107,7 +107,8 @@
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
           <div class="mb-4"></div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">QR코드 생성</button>
+          <!--<button class="btn btn-primary btn-lg btn-block" type="button">QR코드 생성</button>-->
+          <input type="button" onclick="func()" value="QR코드 생성">
           <script type="text/javascript">
           function func() {
             let answer = document.getElementById('name').value;
