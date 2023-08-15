@@ -99,7 +99,7 @@
                 코드를 입력해주세요.
               </div>
             </div> -->
-            
+
           </div>
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
@@ -108,6 +108,22 @@
           </div>
           <div class="mb-4"></div>
           <button class="btn btn-primary btn-lg btn-block" type="submit">QR코드 생성</button>
+          <script type="text/javascript">
+          function func() {
+            let answer = document.getElementById('name').value;
+
+            if(answer == ""){
+              alert('답을 기입해 주십시오');
+            }
+            else if(answer == "HTML"){
+              alert('정답입니다');
+            }
+            else{
+              document.getElementById('answer').value = "";
+              alert('정답이 아닙니다');
+            }
+          }
+        </script>
         </form>
       </div>
     </div>
@@ -115,6 +131,7 @@
       <p class="mb-1">&copy; 수도방위사령부 52보병사단</p>
     </footer>
   </div>
+
   <script>
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
@@ -131,6 +148,8 @@
       });
     }, false);
   </script>
+
+
 </body>
 
 </html>
