@@ -107,7 +107,15 @@
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
           <div class="mb-4"></div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">QR코드 생성</button>
+          <button class="btn btn-primary btn-lg btn-block" type="button" onclick="Check()">QR코드 생성</button>
+          <script language ="javascript">
+            function Check() {
+              var textBox = document.getElementById("name");  //텍스트의 id값을 받는다
+              if (textBox != null) {
+                alert(textBox.value + "님 맞나요?");     //텍스트박스의 value를 받아서 알람
+              }
+            }
+          </script>
         </form>
       </div>
     </div>
@@ -115,6 +123,7 @@
       <p class="mb-1">&copy; 수도방위사령부 52보병사단</p>
     </footer>
   </div>
+
   <script>
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
@@ -131,6 +140,8 @@
       });
     }, false);
   </script>
+
+
 </body>
 
 </html>
