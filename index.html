@@ -1,71 +1,138 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
+
 <head>
-	<title>52사단 예비군</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="web/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="web/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="web/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="web/css/ie9.css" /><![endif]-->
-	</head>
-	<div class="login-wrap">
-	<div class="login-html">
-    	<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">안내</label>
-			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">인적사항 작성</label>
-	<div class="login-form">
-		<div class="sign-in-htm">
-			<div class="group">
-				<label for="user" class="label">예비군훈련 입소를 환영합니다.</label>
-				<input id="user" type="text" class="input">
-		</div>
-        <div class="group">
-          <label for="pass" class="label">QR pass 사용법</label>
-          <input id="pass" type="text" class="input">
-        </div>
-        <div class="group">
-          <input id="check" type="checkbox" class="check" checked>
-          <label for="check"><span class="icon"></span> 체크박스 test</label>
-        </div>
-        <div class="group">
-          <input type="submit" class="button" value="인적사항 작성하기">
-        </div>
-        <div class="hr"></div>
-        <div class="foot-lnk">
-          <a href="#">수도방위사령부 52보병사단</a>
-        </div>
-      </div>
-      <div class="sign-up-htm">
-        <div class="group">
-          <label for="user" class="label">성명</label>
-          <input id="user" type="text" class="input">
-        </div>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 화면 샘플 - Bootstrap</title>
 
-				<div class="group">
-					<label for="name" class="label">성명</label>
-					<input id="user" type="text" class="input" name="info_1" placeholder="홍길동">
-				</div>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <div class="group">
-          <label for="pass" class="label">생년월일</label>
-          <input id="pass" type="date" class="input" data-type="date" value="2000-01-01">
-        </div>
-        <div class="group">
-          <label for="pass" class="label">은행명</label>
-          <input id="pass" type="text" class="input" data-type="text">
-        </div>
-        <div class="group">
-          <label for="pass" class="label">계좌번호</label>
-          <input id="pass" type="text" class="input">
-        </div>
-        <div class="group">
-          <input type="submit" class="button" value="QR코드 생성하기">
-        </div>
-        <div class="hr"></div>
-        <div class="foot-lnk">
-          <label for="tab-1">안내사항</a>
-        </div>
+  <style>
+    body {
+      min-height: 100vh;
+
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+    }
+
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3">회원가입</h4>
+        <form class="validation-form" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="name">이름</label>
+              <input type="text" class="form-control" id="name" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                이름을 입력해주세요.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="nickname">별명</label>
+              <input type="text" class="form-control" id="nickname" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                별명을 입력해주세요.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+            <div class="invalid-feedback">
+              이메일을 입력해주세요.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address">주소</label>
+            <input type="text" class="form-control" id="address" placeholder="서울특별시 강남구" required>
+            <div class="invalid-feedback">
+              주소를 입력해주세요.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
+            <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 mb-3">
+              <label for="root">가입 경로</label>
+              <select class="custom-select d-block w-100" id="root">
+                <option value=""></option>
+                <option>검색</option>
+                <option>카페</option>
+              </select>
+              <div class="invalid-feedback">
+                가입 경로를 선택해주세요.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="code">추천인 코드</label>
+              <input type="text" class="form-control" id="code" placeholder="" required>
+              <div class="invalid-feedback">
+                추천인 코드를 입력해주세요.
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="aggrement" required>
+            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+          </div>
+          <div class="mb-4"></div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+        </form>
       </div>
     </div>
+    <footer class="my-3 text-center text-small">
+      <p class="mb-1">&copy; 2021 YD</p>
+    </footer>
   </div>
-</div>
+  <script>
+    window.addEventListener('load', () => {
+      const forms = document.getElementsByClassName('validation-form');
+
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  </script>
+</body>
+
+</html>
