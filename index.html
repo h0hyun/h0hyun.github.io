@@ -1,147 +1,78 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>52사단 예비군</title>
+    <meta charset="utf-8">
+    <title>QR test</title>
+    <meta name="description" content="Demo for jQuery.qrcode (https://larsjung.de/jquery-qrcode/).">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-qrcode-0.18.0.js"></script>
 
-  <style>
-    body {
-      min-height: 100vh;
+    <script>
+        $(function () {
 
-      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
-      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
-    }
+            var options = {
+                // render method: 'canvas', 'image' or 'div'
+                render: 'canvas',
 
-    .input-form {
-      max-width: 680px;
+                // version range somewhere in 1 .. 40
+                minVersion: 1,
+                maxVersion: 40,
 
-      margin-top: 80px;
-      padding: 32px;
+                // error correction level: 'L', 'M', 'Q' or 'H'
+                ecLevel: 'L',
 
-      background: #fff;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-    }
-  </style>
+                // offset in pixel if drawn onto existing canvas
+                left: 0,
+                top: 0,
+
+                // size in pixel
+                size: 200,
+
+                // code color or image element
+                fill: '#47669F',
+
+                // background color or image element, null for transparent background
+                background: null,
+
+                // content
+                text: 'dlfma\t/2000-01-01\t/1234\t/rnrals\t/1qjs',
+
+                // corner radius relative to module width: 0.0 .. 0.5
+                radius: 0,
+
+                // quiet zone in modules
+                quiet: 0,
+
+                // modes
+                // 0: normal
+                // 1: label strip
+                // 2: label box
+                // 3: image strip
+                // 4: image box
+                mode: 0,
+
+                mSize: 0.1,
+                mPosX: 0.5,
+                mPosY: 0.5,
+
+                label: 'no label',
+                fontname: 'sans',
+                fontcolor: '#000',
+
+                image: null
+            }
+
+            $("#container").qrcode(options);
+        });
+    </script>
 </head>
 
 <body>
-  <div class="container">
-    <div class="input-form-backgroud row">
-      <div class="input-form col-md-12 mx-auto">
-        <h4 class="mb-3">인도인접 QR Pass</h4>
-        <form class="validation-form" novalidate>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="name">이름</label>
-              <input type="text" class="form-control" id="name" placeholder="홍길동" value="" required>
-              <div class="invalid-feedback">
-                이름을 입력해주세요.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="birth">생년월일</label>
-              <input type="date" class="form-control" id="birth" placeholder="" value="2000-01-01" required>
-              <div class="invalid-feedback">
-                생년월일 입력해주세요.
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="bank_num">계좌번호</label>
-            <input type="number" pattern="\d*" class="form-control" id="bank_num" placeholder="00000-00-00000" required>
-            <div class="invalid-feedback">
-              계좌번호를 입력해주세요.
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="bank_name">은행<span class="text-muted">&nbsp;(e.g. 국민, 신한, 카카오)</span></label>
-            <input type="text" class="form-control" id="bank_name" placeholder="은행명을 입력해주세요." required>
-            <div class="invalid-feedback">
-              은행명 입력해주세요.
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-8 mb-3">
-              <label for="menu">도시락</label>
-              <select class="custom-select d-block w-100" id="menu">
-                <option value="도시락 선택">미희망</option>
-                <option>1번 도시락</option>
-                <option>2번 도시락</option>
-              </select>
-              <div class="invalid-feedback">
-                도시락을 선택해주세요.
-              </div>
-            </div>
-
-            <!--
-            <div class="col-md-4 mb-3">
-              <label for="code">코드</label>
-              <input type="text" class="form-control" id="code" placeholder="" required>
-              <div class="invalid-feedback">
-                코드를 입력해주세요.
-              </div>
-            </div> -->
-
-          </div>
-          <hr class="mb-4">
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="aggrement" required>
-            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-          </div>
-          <div class="mb-4"></div>
-          <button class="btn btn-primary btn-lg btn-block" type="button" onclick="Check()">QR코드 생성</button>
-          <script language ="javascript">
-            function Check() {
-              var textBox = document.getElementById("name", "birth");  //텍스트의 id값을 받는다
-              if (textBox != null) {
-                alert(textBox.value + "님 맞나요?");     //텍스트박스의 value를 받아서 알람
-              }
-            }
-          </script>
-        </form>
-      </div>
-    </div>
-    <footer class="my-3 text-center text-small">
-      <p class="mb-1">&copy; 수도방위사령부 52보병사단</p>
-    </footer>
-  </div>
-
-  <script>
-    window.addEventListener('load', () => {
-      const forms = document.getElementsByClassName('validation-form');
-
-      Array.prototype.filter.call(forms, (form) => {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  </script>
-
-
+    <div id="container"></div>
 </body>
 
 </html>
