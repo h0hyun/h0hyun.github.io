@@ -60,6 +60,43 @@
         text-align:center;
     }
 
+    div#tete{
+      margin:auto;
+        text-align:center;
+    }
+
+    /* 흐르는 텍스트 */
+    .animated-title {
+      font-size:17px;
+      font-family:'Raleway',Sans-serif;
+      font-weight:300;
+      position: relative;
+      width: 100%;
+      max-width:100%;
+      height: auto;
+      padding:30px 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+    .animated-title .track {
+      position: absolute;
+      white-space: nowrap;
+      will-change: transform;
+      animation: marquee 15s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(20%); }
+      to { transform: translateX(-70%); }
+    }
+    @media (hover: hover) and (min-width: 700px){
+      .animated-title .content {
+        -webkit-transform: translateY(calc(100% - 8rem));
+        transform: translateY(calc(100% - 8rem));
+      }
+    }
+
+
   </style>
 
 </head>
@@ -69,11 +106,12 @@
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h3 class="mb-3">인도인접 QR Pass</h3>
+        <hr class="mb-3">
         <form class="validation-form" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="name">이름</label>
-              <input type="text" class="form-control" id="name" placeholder="홍길동" value="" required>
+              <input type="text" class="form-control" id="in_name" placeholder="홍길동" value="" required>
               <div class="invalid-feedback">
                 이름을 입력해주세요.
               </div>
@@ -89,9 +127,9 @@
 
           <div class="mb-3">
             <label for="bank_num">계좌번호</label>
-            <input type="number" pattern="\d*" class="form-control" id="bank_num" placeholder="00000-00-00000" required>
+            <input type="number" pattern="\d*" class="form-control" id="bank_num" placeholder="숫자만 입력하세요." required>
             <div class="invalid-feedback">
-              계좌번호를 입력해주세요.
+              계좌번호를 입력해주세요.(*숫자만 입력)
             </div>
           </div>
 
@@ -99,15 +137,15 @@
             <label for="bank_name">은행<span class="text-muted">&nbsp;(e.g. 국민, 신한, 카카오)</span></label>
             <input type="text" class="form-control" id="bank_name" placeholder="은행명을 입력해주세요." required>
             <div class="invalid-feedback">
-              은행명 입력해주세요.
+              은행명을 입력해주세요.
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-8 mb-3">
-              <label for="menu">도시락<span class="text-muted">&nbsp;&nbsp;* 미선택 시 미희망</span></label>
+              <label for="menu">도시락 선택<span class="text-muted">&nbsp;&nbsp;* 미선택 시 미희망</span></label>
               <select class="custom-select d-block w-100" id="menu">
-                <option value="미희망">도시락 선택</option>
+                <option value="미희망">----- 미희망 -----</option>
                 <option>1번 도시락</option>
                 <option>2번 도시락</option>
               </select>
@@ -136,11 +174,12 @@
 
           <div class="wrapper">
             <div id="button">
-              <input class="btn btn-primary btn-lg btn-block" type="button" id="check" value="입력완료" onclick="QRcreate()">
+              <input class="btn btn-primary btn-lg btn-block" type="button" id="check1" value="입력완료" onclick="QRcreate();">
             </div>
 
-            <div id="message" class="hide">
-              <br><button class="btn btn-primary btn-lg btn-block" type="submit">QR코드 생성하기</button>
+          <div class="hide">
+            <div id="message">
+              <br><button class="btn btn-primary btn-lg btn-block" type="submit" id="check2" >QR코드 생성하기</button>
             </div>
           </div>
 
@@ -148,7 +187,7 @@
 
           <script language ="javascript">
           function QRcreate() {
-            var textBox1 = document.getElementById("name");
+            var textBox1 = document.getElementById("in_name");
             var textBox2 = document.getElementById("birth");
             var textBox3 = document.getElementById("bank_num");
             var textBox4 = document.getElementById("bank_name");
@@ -165,34 +204,51 @@
 
 
                           let button = document.querySelector('#button');
-                          let msg = document.querySelector('#message');
+                          let show = document.querySelector('#message');
 
-                          button.addEventListener('click', ()=>{
-                            msg.classList.toggle('reveal');
+                          button.addEventListener('click',()=>{
+                            //show.classList.toggle('reveal');
+                            show.classList.add('reveal');
                           });  //버튼 생성
                         }
+
 
                         else{   //취소
                           return false;
                         }
                   }
+
           </script>
 
 
 
           <!--QR 보여줌 -->
-          <br><div class="makeqr" id="container"></div>
+          <br><hr class="mb-4">
+          <div class="makeqr" id="container"></div>
 
-
+          <!--QR설명-->
+            <!--<label for="qr_text"><span class="text-muted">&nbsp;&nbsp;* QR코드는 1회만 생성됩니다.</span></label>-->
+            <div class="animated-title">
+              <div class="track">
+                <div class="content">
+                  &nbsp;&nbsp;QR코드는 1회만 생성됩니다.
+                  &nbsp;&nbsp;수정을 원하시면 새로고침 후 재생성하시기 바랍니다.
+                  &nbsp;&nbsp;입력한 정보는 서버에 저장되지 않습니다.
+                  &nbsp;&nbsp;QR코드를 길게 눌러 휴대폰에 저장할 수 있습니다.
+                  &nbsp;&nbsp;QR코드는 1회만 생성됩니다.
+                </div>
+              </div>
+            </div>
         </form>
 
 
       </div>
     </div>
-    <footer class="my-3 text-center text-small">
-      <p class="mb-1">&copy; 수도방위사령부 52보병사단</p>
-    </footer>
   </div>
+  <footer class="my-3 text-center text-small">
+    <p class="mb-1"><br> &copy; 수도방위사령부 52보병사단</p> </br>
+  </footer>
+
 
   <script>
     window.addEventListener('load', () => {
@@ -201,25 +257,41 @@
       Array.prototype.filter.call(forms, (form) => {
         form.addEventListener('submit', function (event) {
           if (form.checkValidity() === false) {
+            alert("입력값 오류");
             event.preventDefault();
             event.stopPropagation();
             form.classList.add('was-validated');
           }
-          else if (true) {
-            alert("test");
-            event.preventDefault();
-          }
+
+          else if(form.checkValidity() === true) {
+            alert("생성된 QR코드를 확인하세요");
+            event.preventDefault(); //submit 안되게 설정
+
+
+            var button_click = document.getElementById('check2'); //qr생성버튼 비활성
+
+            button_click.onclick = function(){
+              button_click.disabled = true;
+              alert("QR코드를 다시 생성하려면 양식을 다시 작성하세요.")
+            };
+
+
+
+
+
+            var make_input1 = document.getElementById("in_name");
+            var make_input2 = document.getElementById("birth");
+            var make_input3 = document.getElementById("bank_num");
+            var make_input4 = document.getElementById("bank_name");
+            var make_input5 = document.getElementById("menu");
+
+
 
 
 
           $(function make() {
 
-            var textBox1 = document.getElementById("name");
-            var textBox2 = document.getElementById("birth");
-            var textBox3 = document.getElementById("bank_num");
-            var textBox4 = document.getElementById("bank_name");
-            var textBox5 = document.getElementById("menu");
-
+            //qr 생성
               var options = {
                   render: 'image',
 
@@ -233,15 +305,15 @@
 
                   size: 200,
 
-                  fill: '#47669F',
+                  fill: '#071a52',
 
                   background: null,
 
-                  text: textBox1.value+'\t'
-                        +textBox2.value+'\t'
-                        +textBox3.value+'\t'
-                        +textBox4.value+'\t'
-                        +textBox5.value+'\t',
+                  text: make_input1.value+'\t'
+                        +make_input2.value+'\t'
+                        +make_input3.value+'\t'
+                        +make_input4.value+'\t'
+                        +make_input5.value+'\t',
 
                   radius: 0,
 
@@ -261,10 +333,10 @@
               }
 
               $("#container").qrcode(options);
+              return result; //qr 1번만 생성되게
 
-          });
-
-
+            });
+          }
         }, false);
       });
     }, false);
