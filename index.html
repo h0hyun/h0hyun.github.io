@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Demo for jQuery.qrcode (https://larsjung.de/jquery-qrcode/).">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>52사단 예비군</title>
-
-<!--QR코드 구현-->
+  <!-- QR Code Start -->
   <link href="//fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <script src="web/jquery.min.js"></script>
   <script src="web/jquery-qrcode-0.18.0.js"></script>
-  <!--QR부분 끝 -->
-
-
+  <!-- QR Code End -->
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
     body {
       min-height: 100vh;
-
       background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
       background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
       background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
@@ -34,10 +26,8 @@
 
     .input-form {
       max-width: 680px;
-
       margin-top: 80px;
       padding: 32px;
-
       background: #fff;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
@@ -47,20 +37,20 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
 
-    .hide{
+    .hide {
       visibility: hidden;
     }
 
-    .reveal{
+    .reveal {
       visibility: visible;
     }
 
-    div#container{
+    div#container {
       margin:auto;
-        text-align:center;
+      text-align:center;
     }
 
-    div#tete{
+    div#tete {
       margin:auto;
         text-align:center;
     }
@@ -78,6 +68,7 @@
       overflow-x: hidden;
       overflow-y: hidden;
     }
+
     .animated-title .track {
       position: absolute;
       white-space: nowrap;
@@ -89,18 +80,15 @@
       from { transform: translateX(20%); }
       to { transform: translateX(-70%); }
     }
-    @media (hover: hover) and (min-width: 700px){
+
+    @media (hover: hover) and (min-width: 700px) {
       .animated-title .content {
         -webkit-transform: translateY(calc(100% - 8rem));
         transform: translateY(calc(100% - 8rem));
       }
     }
-
-
   </style>
-
 </head>
-
 <body>
   <div class="container">
     <div class="input-form-backgroud row">
@@ -124,7 +112,6 @@
               </div>
             </div>
           </div>
-
           <div class="mb-3">
             <label for="bank_num">계좌번호</label>
             <input type="number" pattern="\d*" class="form-control" id="bank_num" placeholder="숫자만 입력하세요." required>
@@ -132,7 +119,6 @@
               계좌번호를 입력해주세요.(*숫자만 입력)
             </div>
           </div>
-
           <div class="mb-3">
             <label for="bank_name">은행<span class="text-muted">&nbsp;(e.g. 국민, 신한, 카카오)</span></label>
             <input type="text" class="form-control" id="bank_name" placeholder="은행명을 입력해주세요." required>
@@ -140,7 +126,6 @@
               은행명을 입력해주세요.
             </div>
           </div>
-
           <div class="row">
             <div class="col-md-8 mb-3">
               <label for="menu">도시락 선택<span class="text-muted">&nbsp;&nbsp;* 미선택 시 미희망</span></label>
@@ -153,7 +138,6 @@
                 도시락을 선택해주세요.
               </div>
             </div>
-
             <!--
             <div class="col-md-4 mb-3">
               <label for="code">코드</label>
@@ -162,7 +146,6 @@
                 코드를 입력해주세요.
               </div>
             </div> -->
-
           </div>
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
@@ -170,63 +153,19 @@
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
           <div class="mb-4"></div>
-
-
           <div class="wrapper">
             <div id="button">
               <input class="btn btn-primary btn-lg btn-block" type="button" id="check1" value="입력완료" onclick="QRcreate();">
             </div>
-
-          <div class="hide">
-            <div id="message">
-              <br><button class="btn btn-primary btn-lg btn-block" type="submit" id="check2" >QR코드 생성하기</button>
+            <div class="hide">
+              <div id="message">
+                <br><button class="btn btn-primary btn-lg btn-block" type="submit" id="check2" >QR코드 생성하기</button>
+              </div>
             </div>
-          </div>
-
-
-
-          <script language ="javascript">
-          function QRcreate() {
-            var textBox1 = document.getElementById("in_name");
-            var textBox2 = document.getElementById("birth");
-            var textBox3 = document.getElementById("bank_num");
-            var textBox4 = document.getElementById("bank_name");
-            var textBox5 = document.getElementById("menu");
-
-            if (confirm("이름 : "+ textBox1.value +"\n"+
-                        "생년월일 : "+ textBox2.value +"\n"+
-                        "계좌번호 : "+ textBox3.value +"\n"+
-                        "은행명 : "+ textBox4.value +"\n"+
-                        "도시락 : "+ textBox5.value +"\n"+
-                        "입력한 내용이 맞습니까?") == true){
-                          document.body.style.background = "#1abc9c";
-                          alert("QR코드 생성하기를 누르세요.");  //입력내용 확인
-
-
-                          let button = document.querySelector('#button');
-                          let show = document.querySelector('#message');
-
-                          button.addEventListener('click',()=>{
-                            //show.classList.toggle('reveal');
-                            show.classList.add('reveal');
-                          });  //버튼 생성
-                        }
-
-
-                        else{   //취소
-                          return false;
-                        }
-                  }
-
-          </script>
-
-
-
-          <!--QR 보여줌 -->
-          <br><hr class="mb-4">
-          <div class="makeqr" id="container"></div>
-
-          <!--QR설명-->
+            <!--QR 보여줌 -->
+            <br><hr class="mb-4">
+            <div class="makeqr" id="container"></div>
+            <!--QR설명-->
             <!--<label for="qr_text"><span class="text-muted">&nbsp;&nbsp;* QR코드는 1회만 생성됩니다.</span></label>-->
             <div class="animated-title">
               <div class="track">
@@ -239,18 +178,196 @@
                 </div>
               </div>
             </div>
+          </div>
         </form>
-
-
       </div>
     </div>
   </div>
   <footer class="my-3 text-center text-small">
     <p class="mb-1"><br> &copy; 수도방위사령부 52보병사단</p> </br>
   </footer>
-
-
   <script>
+    function translateKorToEng(value = '') {
+      var res = "";
+      var ENG_KEY = "rRseEfaqQtTdwWczxvgkoiOjpuPhynbml";
+      var KOR_KEY = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ";
+      var CHO_DATA = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ";
+      var JUNG_DATA = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ";
+      var JONG_DATA = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ";
+
+      if (value.length == 0) {
+        return res;
+      }
+
+      for (var i = 0; i < value.length; i++) {
+        var ch = value.charAt(i);
+        var nCode = ch.charCodeAt(0);
+        var nCho = CHO_DATA.indexOf(ch), nJung = JUNG_DATA.indexOf(ch), nJong = JONG_DATA.indexOf(ch);
+        var arrKeyIndex = [-1, -1, -1, -1, -1];
+
+        if (0xac00 <= nCode && nCode <= 0xd7a3) {
+          nCode -= 0xac00;
+          arrKeyIndex[0] = Math.floor(nCode / (21 * 28));			// 초성
+          arrKeyIndex[1] = Math.floor(nCode / 28) % 21;			// 중성
+          arrKeyIndex[3] = nCode % 28 - 1;						// 종성
+        }
+        else if (nCho != -1)			// 초성 자음
+          arrKeyIndex[0] = nCho;
+        else if (nJung != -1)			// 중성
+          arrKeyIndex[1] = nJung;
+        else if (nJong != -1)			// 종성 자음
+          arrKeyIndex[3] = nJong;
+        else							// 한글이 아님
+          res += ch;
+
+        // 실제 Key Index로 변경. 초성은 순서 동일
+        if (arrKeyIndex[1] != -1) {
+          if (arrKeyIndex[1] == 9) {					// ㅘ
+            arrKeyIndex[1] = 27;
+            arrKeyIndex[2] = 19;
+          } else if (arrKeyIndex[1] == 10) {			// ㅙ
+            arrKeyIndex[1] = 27;
+            arrKeyIndex[2] = 20;
+          } else if (arrKeyIndex[1] == 11) {			// ㅚ
+            arrKeyIndex[1] = 27;
+            arrKeyIndex[2] = 32;
+          } else if (arrKeyIndex[1] == 14) {			// ㅝ
+            arrKeyIndex[1] = 29;
+            arrKeyIndex[2] = 23;
+          } else if (arrKeyIndex[1] == 15) {			// ㅞ
+            arrKeyIndex[1] = 29;
+            arrKeyIndex[2] = 24;
+          } else if (arrKeyIndex[1] == 16) {			// ㅟ
+            arrKeyIndex[1] = 29;
+            arrKeyIndex[2] = 32;
+          } else if (arrKeyIndex[1] == 19) {			// ㅢ
+            arrKeyIndex[1] = 31;
+            arrKeyIndex[2] = 32;
+          } else {
+            arrKeyIndex[1] = KOR_KEY.indexOf(JUNG_DATA.charAt(arrKeyIndex[1]));
+            arrKeyIndex[2] = -1;
+          }
+        }
+        if (arrKeyIndex[3] != -1) {
+          if (arrKeyIndex[3] == 2) {					// ㄳ
+            arrKeyIndex[3] = 0
+            arrKeyIndex[4] = 9;
+          } else if (arrKeyIndex[3] == 4) {			// ㄵ
+            arrKeyIndex[3] = 2;
+            arrKeyIndex[4] = 12;
+          } else if (arrKeyIndex[3] == 5) {			// ㄶ
+            arrKeyIndex[3] = 2;
+            arrKeyIndex[4] = 18;
+          } else if (arrKeyIndex[3] == 8) {			// ㄺ
+            arrKeyIndex[3] = 5;
+            arrKeyIndex[4] = 0;
+          } else if (arrKeyIndex[3] == 9) {			// ㄻ
+            arrKeyIndex[3] = 5;
+            arrKeyIndex[4] = 6;
+          } else if (arrKeyIndex[3] == 10) {			// ㄼ
+            arrKeyIndex[3] = 5;
+            arrKeyIndex[4] = 7;
+          } else if (arrKeyIndex[3] == 11) {			// ㄽ
+            arrKeyIndex[3] = 5;
+            arrKeyIndex[4] = 9;
+          } else if (arrKeyIndex[3] == 12) {			// ㄾ
+            arrKeyIndex[3] = 5;
+            arrKeyIndex[4] = 16;
+          } else if (arrKeyIndex[3] == 13) {			// ㄿ
+            arrKeyIndex[3] = 5;
+            arrKeyIndex[4] = 17;
+          } else if (arrKeyIndex[3] == 14) {			// ㅀ
+            arrKeyIndex[3] = 5;
+            arrKeyIndex[4] = 18;
+          } else if (arrKeyIndex[3] == 17) {			// ㅄ
+            arrKeyIndex[3] = 7;
+            arrKeyIndex[4] = 9;
+          } else {
+            arrKeyIndex[3] = KOR_KEY.indexOf(JONG_DATA.charAt(arrKeyIndex[3]));
+            arrKeyIndex[4] = -1;
+          }
+        }
+
+        for (var j = 0; j < 5; j++) {
+          if (arrKeyIndex[j] != -1)
+            res += ENG_KEY.charAt(arrKeyIndex[j]);
+        }
+      }
+
+      return res;
+    }
+
+    function QRcreate() {
+      var textBox1 = document.getElementById("in_name");
+      var textBox2 = document.getElementById("birth");
+      var textBox3 = document.getElementById("bank_num");
+      var textBox4 = document.getElementById("bank_name");
+      var textBox5 = document.getElementById("menu");
+
+      if (confirm("이름 : "+ textBox1.value +"\n"+
+              "생년월일 : "+ textBox2.value +"\n"+
+              "계좌번호 : "+ textBox3.value +"\n"+
+              "은행명 : "+ textBox4.value +"\n"+
+              "도시락 : "+ textBox5.value +"\n"+
+              "입력한 내용이 맞습니까?") == true
+      ) {
+        document.body.style.background = "#1abc9c";
+        // 입력내용 확인
+        alert("QR코드 생성하기를 누르세요.");
+
+        let button = document.querySelector('#button');
+        let show = document.querySelector('#message');
+
+        button.addEventListener('click', () => {
+          // show.classList.toggle('reveal');
+          // 버튼 생성
+          show.classList.add('reveal');
+        });
+      } else {
+        return false;
+      }
+    }
+
+    function createQrCode() {
+      var user_name = document.getElementById("in_name");
+      var user_birth = document.getElementById("birth");
+      var bank_number = document.getElementById("bank_num");
+      var bank_name = document.getElementById("bank_name");
+      var lunch_menu = document.getElementById("menu");
+
+      $(function make() {
+        // Create QR Code
+        var options = {
+          render: 'image',
+          minVersion: 1,
+          maxVersion: 40,
+          ecLevel: 'L',
+          left: 0,
+          top: 0,
+          size: 200,
+          fill: '#071a52',
+          background: null,
+          text: translateKorToEng(user_name.value) + '\t'
+                  + user_birth.value + '\t'
+                  + bank_number.value + '\t'
+                  + translateKorToEng(bank_name.value) + '\t'
+                  + translateKorToEng(lunch_menu.value) + '\t',
+          radius: 0,
+          quiet: 0,
+          mode: 4,
+          mSize: 0.1,
+          mPosX: 0.5,
+          mPosY: 0.5,
+          label: 'no label',
+          fontname: 'sans',
+          fontcolor: '#000',
+          image: null
+        }
+
+        $("#container").qrcode(options);
+      });
+    }
+
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
 
@@ -261,91 +378,18 @@
             event.preventDefault();
             event.stopPropagation();
             form.classList.add('was-validated');
-          }
-
-          else if(form.checkValidity() === true) {
+          } else if (form.checkValidity() === true) {
             alert("생성된 QR코드를 확인하세요");
-            event.preventDefault(); //submit 안되게 설정
-
-
-            var button_click = document.getElementById('check2'); //qr생성버튼 비활성
-
-            button_click.onclick = function(){
-              button_click.disabled = true;
-              alert("QR코드를 다시 생성하려면 양식을 다시 작성하세요.")
-            };
-
-
-
-
-
-            var make_input1 = document.getElementById("in_name");
-            var make_input2 = document.getElementById("birth");
-            var make_input3 = document.getElementById("bank_num");
-            var make_input4 = document.getElementById("bank_name");
-            var make_input5 = document.getElementById("menu");
-
-
-
-
-
-          $(function make() {
-
-            //qr 생성
-              var options = {
-                  render: 'image',
-
-                  minVersion: 1,
-                  maxVersion: 40,
-
-                  ecLevel: 'L',
-
-                  left: 0,
-                  top: 0,
-
-                  size: 200,
-
-                  fill: '#071a52',
-
-                  background: null,
-
-                  text: make_input1.value+'\t'
-                        +make_input2.value+'\t'
-                        +make_input3.value+'\t'
-                        +make_input4.value+'\t'
-                        +make_input5.value+'\t',
-
-                  radius: 0,
-
-                  quiet: 0,
-
-                  mode: 4,
-
-                  mSize: 0.1,
-                  mPosX: 0.5,
-                  mPosY: 0.5,
-
-                  label: 'no label',
-                  fontname: 'sans',
-                  fontcolor: '#000',
-
-                  image: null
-              }
-
-              $("#container").qrcode(options);
-              return result; //qr 1번만 생성되게
-
-            });
+            // Prevent submit action
+            event.preventDefault();
+            // Clear QR code container
+            $("#container").html('');
+            // Create QR Code
+            createQrCode();
           }
         }, false);
       });
     }, false);
-
-
-
   </script>
-
-
 </body>
-
 </html>
