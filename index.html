@@ -132,10 +132,10 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-8 mb-3">
-              <label for="bank_name">은행<span class="text-muted">&nbsp;(e.g. 국민, 신한, 카카오)</span></label>
-              <select type="text" class="custom-select d-block w-100" id="bank_name" onclick="bank_input_box_func(this)">
-                <option selected>은행 선택</option>
+            <div class="col-md-8 mb-3" id="bankBox">
+              <label for="bank_name">은행<span style=" font: 0.85em/1em sans-serif ; color: #797979;">&nbsp;  * 목록에 없을 경우 기타(직접입력)</span></label>
+              <select type="text" class="custom-select d-block w-100" id="bank_name" onchange="bank_input_box_func(this)" required>
+                <option value="" selected>은행 선택</option>
                 <option value="국민">국민</option>
                 <option value="기업">기업</option>
                 <option value="농협">농협</option>
@@ -169,9 +169,10 @@
 
           <div class="row">
             <div class="col-md-8 mb-3">
-              <label for="menu">도시락 선택<span class="text-muted">&nbsp;&nbsp;* 미선택 시 미희망</span></label>
-              <select class="custom-select d-block w-100" id="menu">
-                <option value="미희망">미희망</option>
+              <label for="menu">도시락 선택<span style=" font: 0.85em/1em sans-serif ; color: #797979;">&nbsp;&nbsp;  * 1번 한식, 2번 양식</span></label>
+              <select class="custom-select d-block w-100" id="menu" required>
+                <option value="">도시락 선택</option>
+                <option>미희망</option>
                 <option>1번 도시락</option>
                 <option>2번 도시락</option>
               </select>
@@ -585,7 +586,7 @@
       Array.prototype.filter.call(forms, (form) => {
         form.addEventListener('submit', function (event) {
           if (form.checkValidity() === false) {
-            alert("입력값 오류");
+            alert("누락된 항목을 확인하세요");
             event.preventDefault();
             event.stopPropagation();
             form.classList.add('was-validated');
