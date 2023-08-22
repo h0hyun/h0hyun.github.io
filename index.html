@@ -37,22 +37,9 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
 
-    .hide {
-      visibility: hidden;
-    }
-
-    .reveal {
-      visibility: visible;
-    }
-
     div#container {
       margin:auto;
       text-align:center;
-    }
-
-    div#tete {
-      margin:auto;
-        text-align:center;
     }
 
     /* 흐르는 텍스트 */
@@ -88,19 +75,15 @@
       }
     }
 
-    .form-check{
-    display: inline;
+    .form-check {
+      display: inline;
     }
 
-    fieldset{
-        margin-top: -17px;
+    fieldset {
+      margin-top: -17px;
     }
-
   </style>
-
 </head>
-
-
 <body>
   <div class="container">
     <div class="input-form-backgroud row">
@@ -149,24 +132,6 @@
               </div>
             </div>
           </div>
-
-          <script>
-          function bank_input_box_func(obj){
-            if(obj.value=="기타"){
-              i = document.createElement("input");
-              i.setAttribute("type", "text");
-              i.setAttribute("class", "form-control");
-              i.setAttribute("id", "bank_name");
-              i.setAttribute("placeholder", "은행명을 입력해주세요.");
-              i.setAttribute("name", "bank_name_input");
-              i.setAttribute("required", "true");
-              obj.parentElement.appendChild(i);
-              obj.remove();
-            }
-          }
-        </script>
-
-
           <div class="row">
             <div class="col-md-8 mb-3">
               <label for="menu">도시락 선택<span style=" font: 0.85em/1em sans-serif ; color: #797979;">&nbsp;&nbsp;  * 1번 한식, 2번 양식</span></label>
@@ -182,11 +147,9 @@
             </div>
           </div>
           <hr class="mb-4">
-
-          <!--문진표-->
+          <!-- 문진표 Start -->
           <h5 class="mb-3">전자문진표 및 보안서약</h5>
-          <div class="mb-3"><br>
-
+          <fieldset class="mb-3"><br>
             <fieldset class="form-group border p-3">
               <tr>
                 <th scope="row" rowspan="2">1.</th>
@@ -207,7 +170,6 @@
                 </td>
               </tr>
             </fieldset>
-
             <fieldset class="form-group border p-3">
               <tr>
                 <th scope="row" rowspan="2">2.</th>
@@ -228,7 +190,6 @@
                 </td>
               </tr>
             </fieldset>
-
             <fieldset class="form-group border p-3">
               <tr>
                 <th scope="row" rowspan="2">3.</th>
@@ -249,7 +210,6 @@
                 </td>
               </tr>
             </fieldset>
-
             <fieldset class="form-group border p-3">
               <tr>
                 <th scope="row" rowspan="2">4.</th>
@@ -270,7 +230,6 @@
                 </td>
               </tr>
             </fieldset>
-
             <fieldset class="form-group border p-3">
               <tr>
                 <th scope="row" rowspan="2">5.</th>
@@ -291,7 +250,6 @@
                 </td>
               </tr>
             </fieldset>
-
             <fieldset class="form-group border p-3">
               <tr>
                 <th scope="row" rowspan="2"></th>
@@ -315,51 +273,30 @@
                   </div>
                 </td>
               </tr>
-
-            </div>
-
-            <script>
-            $("input[type='checkbox']").on("click",function(e){
-              oneCheckbox(this);  // 선택값 하나
-            });
-            function oneCheckbox(a){
-          	   var checkName = a.name;
-               var obj = document.getElementsByName(checkName);
-               for(var i=0; i<obj.length; i++){
-                 if(obj[i] != a){
-                   obj[i].checked = false;
-                 }
-               }
-             }
-           </script>
-
-
-
-
+            </fieldset>
+          </fieldset>
           <hr class="mb-4">
           <span style=" font: 0.85em/1em sans-serif ; color: #797979;">
             상기 문진결과와 계좌는 예비군훈련 통제 및 행정처리에만 사용되며, 훈련 종료 후 파기 됩니다. 상기명 본인은 예비군 전자문진 결과 및 위의 개인정보 사용에 대하여 동의합니다.
           </span>
-
           <div class="custom-control custom-checkbox"><br>
             <input type="checkbox" class="custom-control-input" id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
           <div class="mb-4"></div>
           <div class="wrapper">
-            <div id="button">
-              <input class="btn btn-primary btn-lg btn-block" type="button" id="check1" value="입력완료" onclick="QRcreate();">
-            </div>
-            <div class="hide">
-              <div id="message">
-                <br><button class="btn btn-primary btn-lg btn-block" type="submit" id="check2" >QR코드 생성하기</button>
-              </div>
+            
+<!--            <div id="button">-->
+<!--              <input class="btn btn-primary btn-lg btn-block" type="button" id="check1" value="입력완료" onclick="QRcreate();">-->
+<!--            </div>-->
+            
+            <div id="message">
+              <br><button class="btn btn-primary btn-lg btn-block" type="submit" id="check2" >QR코드 생성하기</button>
             </div>
             <!--QR 보여줌 -->
             <br><hr class="mb-4">
             <div class="makeqr" id="container"></div>
             <!--QR설명-->
-            <!--<label for="qr_text"><span class="text-muted">&nbsp;&nbsp;* QR코드는 1회만 생성됩니다.</span></label>-->
             <div class="animated-title">
               <div class="track">
                 <div class="content">
@@ -379,13 +316,19 @@
     <p class="mb-1"><br> &copy; 수도방위사령부 52보병사단</p> </br>
   </footer>
   <script>
-
-  $(document).ready(function() {
-    $('#q6Check2').click(function() {
-      alert('동의하지 않을 경우 훈련입소가 제한됩니다.')
-    });
-  });
-
+    function bank_input_box_func(obj) {
+      if (obj.value=="기타") {
+        i = document.createElement("input");
+        i.setAttribute("type", "text");
+        i.setAttribute("class", "form-control");
+        i.setAttribute("id", "bank_name");
+        i.setAttribute("placeholder", "은행명을 입력해주세요.");
+        i.setAttribute("name", "bank_name_input");
+        i.setAttribute("required", "true");
+        obj.parentElement.appendChild(i);
+        obj.remove();
+      }
+    }
 
     function translateKorToEng(value = '') {
       var res = "";
@@ -497,106 +440,95 @@
       return res;
     }
 
-    function QRcreate() {
-      var textBox1 = document.getElementById("in_name");
-      var textBox2 = document.getElementById("birth");
-      var textBox3 = document.getElementById("bank_num");
-      var textBox4 = document.getElementById("bank_name");
-      var textBox5 = document.getElementById("menu");
-
-      if (confirm("이름 : "+ textBox1.value +"\n"+
-              "생년월일 : "+ textBox2.value +"\n"+
-              "계좌번호 : "+ textBox3.value +"\n"+
-              "은행명 : "+ textBox4.value +"\n"+
-              "도시락 : "+ textBox5.value +"\n"+
-              "입력한 내용이 맞습니까?") == true
-      ) {
-        document.body.style.background = "#1abc9c";
-        // 입력내용 확인
-        alert("QR코드 생성하기를 누르세요.");
-
-        let button = document.querySelector('#button');
-        let show = document.querySelector('#message');
-
-        button.addEventListener('click', () => {
-          // show.classList.toggle('reveal');
-          // 버튼 생성
-          show.classList.add('reveal');
-        });
-      } else {
-        return false;
-      }
-    }
-
     function createQrCode() {
       var user_name = document.getElementById("in_name");
       var user_birth = document.getElementById("birth");
       var bank_number = document.getElementById("bank_num");
       var bank_name = document.getElementById("bank_name");
       var lunch_menu = document.getElementById("menu");
-      var quest_1 = document.getElementById("q1Check2");
-      var quest_2 = document.getElementById("q1Check1");
-      var quest_3 = document.getElementById("q1Check2");
+      $("#container").html('');
 
-
-
-      $(function make() {
-        // Create QR Code
-        var options = {
-          render: 'image',
-          minVersion: 1,
-          maxVersion: 40,
-          ecLevel: 'L',
-          left: 0,
-          top: 0,
-          size: 200,
-          fill: '#071a52',
-          background: null,
-          text: translateKorToEng(user_name.value) + '\t'
-                  + user_birth.value + '\t'
-                  + bank_number.value + '\t'
-                  + translateKorToEng(bank_name.value) + '\t'
-                  + translateKorToEng(lunch_menu.value) + '\t'
-                  + translateKorToEng($("input[name='q1']:checked").val()) + '\t'
-                  + translateKorToEng($("input[name='q2']:checked").val()) + '\t'
-                  + translateKorToEng($("input[name='q3']:checked").val()) + '\t'
-                  + translateKorToEng($("input[name='q4']:checked").val()) + '\t'
-                  + translateKorToEng($("input[name='q5']:checked").val()) + '\t'
-                  + translateKorToEng($("input[name='q6']:checked").val()) + '\t',
-
-          radius: 0,
-          quiet: 0,
-          mode: 4,
-          mSize: 0.1,
-          mPosX: 0.5,
-          mPosY: 0.5,
-          label: 'no label',
-          fontname: 'sans',
-          fontcolor: '#000',
-          image: null
-        }
-
-        $("#container").qrcode(options);
-      });
+      if (confirm("이름 : "+ user_name.value +"\n"+
+              "생년월일 : "+ user_birth.value +"\n"+
+              "계좌번호 : "+ bank_number.value +"\n"+
+              "은행명 : "+ bank_name.value +"\n"+
+              "도시락 : "+ lunch_menu.value +"\n"+
+              "입력한 내용이 맞습니까?") == true
+      ) {
+        $(function make() {
+          // Create QR Code
+          var options = {
+            render: 'image',
+            minVersion: 1,
+            maxVersion: 40,
+            ecLevel: 'L',
+            left: 0,
+            top: 0,
+            size: 200,
+            fill: '#071a52',
+            background: null,
+            text: translateKorToEng(user_name.value) + '\t'
+                    + user_birth.value + '\t'
+                    + bank_number.value + '\t'
+                    + translateKorToEng(bank_name.value) + '\t'
+                    + translateKorToEng(lunch_menu.value) + '\t'
+                    + translateKorToEng($("input[name='q1']:checked").val()) + '\t'
+                    + translateKorToEng($("input[name='q2']:checked").val()) + '\t'
+                    + translateKorToEng($("input[name='q3']:checked").val()) + '\t'
+                    + translateKorToEng($("input[name='q4']:checked").val()) + '\t'
+                    + translateKorToEng($("input[name='q5']:checked").val()) + '\t'
+                    + translateKorToEng($("input[name='q6']:checked").val()) + '\t',
+            radius: 0,
+            quiet: 0,
+            mode: 4,
+            mSize: 0.1,
+            mPosX: 0.5,
+            mPosY: 0.5,
+            label: 'no label',
+            fontname: 'sans',
+            fontcolor: '#000',
+            image: null
+          }
+          // Notification alert
+          alert("생성된 QR코드를 확인하세요");
+          // Clear QR code container
+          $("#container").qrcode(options);
+        });
+      }
     }
+
+    $(document).ready(function() {
+      $('#q6Check2').click(function() {
+        alert('동의하지 않을 경우 훈련입소가 제한됩니다.');
+      });
+
+      $("input[type='checkbox']").on("click", () => {
+        var checkName = this.name;
+        var obj = document.getElementsByName(checkName);
+        for (var i = 0; i < obj.length; i++) {
+          if (obj[i] != this) {
+            obj[i].checked = false;
+          }
+        }
+      });
+    });
 
     window.addEventListener('load', () => {
       const forms = document.getElementsByClassName('validation-form');
 
       Array.prototype.filter.call(forms, (form) => {
         form.addEventListener('submit', function (event) {
+          // Prevent submit action
+          event.preventDefault();
+
           if (form.checkValidity() === false) {
             alert("누락된 항목을 확인하세요");
-            event.preventDefault();
             event.stopPropagation();
             form.classList.add('was-validated');
-          }
-          else if (form.checkValidity() === true) {
-            alert("생성된 QR코드를 확인하세요");
-            // Prevent submit action
-            event.preventDefault();
-            // Clear QR code container
-            $("#container").html('');
+          } else if ($("input[name='q6']:checked").val() == 'undefined' || $("input[name='q6']:checked").val() == '미동의') {
+            alert('훈련소 입소를 위해선 문진표 6번 항목의 동의가 필요합니다.');
+            event.stopPropagation();
+          } else if (form.checkValidity() === true) {
             // Create QR Code
             createQrCode();
           }
