@@ -9,8 +9,8 @@
   <title>52사단 예비군</title>
   <!-- QR Code Start -->
   <link href="//fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <script src="web/jquery.min.js"></script>
-  <script src="web/jquery-qrcode-0.18.0.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-qrcode-0.18.0.js"></script>
   <!-- QR Code End -->
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -26,7 +26,7 @@
 
     .input-form {
       max-width: 680px;
-      margin-top: 80px;
+      margin-top: 30px;
       padding: 32px;
       background: #fff;
       -webkit-border-radius: 10px;
@@ -43,6 +43,27 @@
     }
 
     /* 흐르는 텍스트 */
+    .animated-val {
+      font-size:18px;
+      color:white;
+      font-family:'Raleway',Sans-serif;
+      font-weight:360;
+      position: relative;
+      width: 100%;
+      max-width:100%;
+      height: auto;
+      padding:30px 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .animated-val .track {
+      position: absolute;
+      white-space: nowrap;
+      will-change: transform;
+      animation: marquee 15s linear infinite;
+    }
+
     .animated-title {
       font-size:17px;
       font-family:'Raleway',Sans-serif;
@@ -69,6 +90,10 @@
     }
 
     @media (hover: hover) and (min-width: 700px) {
+      .animated-val .content {
+        -webkit-transform: translateY(calc(100% - 8rem));
+        transform: translateY(calc(100% - 8rem));
+      }
       .animated-title .content {
         -webkit-transform: translateY(calc(100% - 8rem));
         transform: translateY(calc(100% - 8rem));
@@ -87,6 +112,15 @@
 <body>
   <div class="container">
     <div class="input-form-backgroud row">
+      <div class="animated-val">
+        <div class="track">
+          <div class="content">
+            &nbsp;&nbsp;예비군훈련 입소 간편화를 위해 시행하는 QR Pass 입니다.
+            &nbsp;&nbsp;서버에 저장되지 않으며 기타 다른 용도로 사용되지 않습니다.
+            &nbsp;&nbsp;박달예비군훈련대
+          </div>
+        </div>
+      </div>
       <div class="input-form col-md-12 mx-auto">
         <h3 class="mb-3">예비군훈련 QR Pass</h3>
         <hr class="mb-3">
@@ -148,7 +182,7 @@
           </div>
           <hr class="mb-4">
           <!-- 문진표 Start -->
-          <h5 class="mb-3">전자문진표 및 보안서약</h5>
+          <h5 class="mb-3">전자문진표 및<span style=" font: 1em/1em sans-serif ; color: blue;"> 보안서약</h5>
           <fieldset class="mb-3"><br>
             <fieldset class="form-group border p-3">
               <tr>
@@ -256,8 +290,10 @@
                 <th scope="row"></th>
                 <td>
                   <span style=" font: 1.05em/1em sans-serif ; color: blue;">
-                    6. 개인소유 정보통신장비는 군사보호구역 보호에 따라 '국방부모바일보안앱'을 설치해야하며, 부대 내 사진촬영은 일체 금지됩니다.
-                  </span>
+                    6. 개인소유 정보통신장비는 군사보호구역 출입에 따라 '국방부모바일보안앱'을 설치해야하며, 부대 내 사진촬영은 일체 금지합니다.
+                  </span><br>
+                  <span style=" font: 1.03em/1em sans-serif; font-weight:bold; color: red;">무단사용 시 퇴소조치</span>
+                  <span style=" font: 1.05em/1em sans-serif; color: blue;">되며 어떠한 이의도 제기하지 않을 것을 동의합니다.</span>
                 </td>
               </tr>
               <tr>
@@ -285,11 +321,9 @@
           </div>
           <div class="mb-4"></div>
           <div class="wrapper">
-            
 <!--            <div id="button">-->
 <!--              <input class="btn btn-primary btn-lg btn-block" type="button" id="check1" value="입력완료" onclick="QRcreate();">-->
 <!--            </div>-->
-            
             <div id="message">
               <br><button class="btn btn-primary btn-lg btn-block" type="submit" id="check2" >QR코드 생성하기</button>
             </div>
@@ -313,7 +347,7 @@
     </div>
   </div>
   <footer class="my-3 text-center text-small">
-    <p class="mb-1"><br> &copy; 수도방위사령부 52보병사단</p> </br>
+    <p class="mb-1"><br> &copy; 수도방위사령부 제52보병사단</p> </br>
   </footer>
   <script>
     function bank_input_box_func(obj) {
@@ -469,7 +503,7 @@
             background: null,
             text: translateKorToEng(user_name.value) + '\t'
                     + user_birth.value + '\t'
-                    + bank_number.value + '\t'
+                    + "'" + bank_number.value + '\t'
                     + translateKorToEng(bank_name.value) + '\t'
                     + translateKorToEng(lunch_menu.value) + '\t'
                     + translateKorToEng($("input[name='q1']:checked").val()) + '\t'
