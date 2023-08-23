@@ -561,7 +561,7 @@
             event.stopPropagation();
             form.classList.add('was-validated');
           } else if ($("input[name='q6']:checked").val() == 'undefined' || $("input[name='q6']:checked").val() == '미동의') {
-            alert('훈련소 입소를 위해선 문진표 6번 항목의 동의가 필요합니다.');
+            alert('보안서약에 동의하지 않을 경우 훈련입소가 제한됩니다.');
             event.stopPropagation();
           } else if (form.checkValidity() === true) {
             // Create QR Code
