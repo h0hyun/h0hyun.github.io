@@ -9,8 +9,8 @@
   <title>52사단 예비군</title>
   <!-- QR Code Start -->
   <link href="//fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <script src="web/jquery.min.js"></script>
-  <script src="web/jquery-qrcode-0.18.0.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-qrcode-0.18.0.js"></script>
   <!-- QR Code End -->
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -139,6 +139,13 @@
               <div class="invalid-feedback">
                 생년월일 입력해주세요.
               </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="phone_num">전화번호</label>
+            <input type="number" pattern="\d*" class="form-control" id="phone_num" placeholder="숫자만 입력하세요." required>
+            <div class="invalid-feedback">
+              전화번호를 입력해주세요.(*숫자만 입력)
             </div>
           </div>
           <div class="mb-3">
@@ -348,7 +355,7 @@
   </div>
   <footer class="my-3 text-center text-small">
     <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
-    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">v0.9.23</span></p></br>
+    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.10.24</span></p></br>
   </footer>
   <script>
     function bank_input_box_func(obj) {
@@ -478,6 +485,7 @@
     function createQrCode() {
       var user_name = document.getElementById("in_name");
       var user_birth = document.getElementById("birth");
+      var phone_number = document.getElementById("phone_num");
       var bank_number = document.getElementById("bank_num");
       var bank_name = document.getElementById("bank_name");
       var lunch_menu = document.getElementById("menu");
@@ -485,6 +493,7 @@
 
       if (confirm("이름 : "+ user_name.value +"\n"+
               "생년월일 : "+ user_birth.value +"\n"+
+              "전화번호 : "+ phone_number.value +"\n"+
               "계좌번호 : "+ bank_number.value +"\n"+
               "은행명 : "+ bank_name.value +"\n"+
               "도시락 : "+ lunch_menu.value +"\n"+
@@ -504,6 +513,7 @@
             background: null,
             text: translateKorToEng(user_name.value) + '\t'
                     + user_birth.value + '\t'
+                    + phone_number.value + '\t'
                     + "'" + bank_number.value + '\t'
                     + translateKorToEng(bank_name.value) + '\t'
                     + translateKorToEng(lunch_menu.value) + '\t'
@@ -561,7 +571,7 @@
             event.stopPropagation();
             form.classList.add('was-validated');
           } else if ($("input[name='q6']:checked").val() == 'undefined' || $("input[name='q6']:checked").val() == '미동의') {
-            alert('보안서약(6번항목)에 동의하지 않을 경우 훈련입소가 제한됩니다.');
+            alert('훈련입소를 위해선 문진표 6번 항목의 동의가 필요합니다.');
             event.stopPropagation();
           } else if (form.checkValidity() === true) {
             // Create QR Code
