@@ -135,7 +135,7 @@
             </div>
             <div class="col-md-6 mb-3">
               <label for="birth">생년월일</label>
-              <input type="date" class="form-control" id="birth" placeholder="" value="2000-01-01" required>
+              <input type="number" pattern="\d*" class="form-control" id="birth" placeholder="생년월일 6자리(991230)" value="" oninput='handleOnInput_birth(this)' required>
               <div class="invalid-feedback">
                 생년월일 입력해주세요.
               </div>
@@ -355,9 +355,16 @@
   </div>
   <footer class="my-3 text-center text-small">
     <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
-    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.10.26</span></p><br>
+    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.14.28</span></p><br>
   </footer>
   <script>
+
+    function handleOnInput_birth(el) {
+      if(!(el.value.length === 6)){
+        el.value
+          = el.value.substr(0, 6);
+        }
+    }
 
     function handleOnInput(el) {
       if(!(el.value.length === 10) && !(el.value.length === 11))  {
@@ -526,7 +533,7 @@
             top: 0,
             size: 200,
             fill: '#071a52',
-            background: null,
+            background: 'white',
             text: translateKorToEng(user_name.value) + '\t'
                     + user_birth.value + '\t'
                     + phone_number.value + '\t'
@@ -588,6 +595,9 @@
             form.classList.add('was-validated');
           } else if (!checkKorea(document.getElementById('in_name'))) {
             alert('이름란에 초성, 영어, 숫자, 특수문자 등이 포함되어있습니다.');
+            event.stopPropagation();
+          } else if($("input[id='birth']").val().length < 6){
+            alert('생년월일 6자리를 올바르게 입력해주세요.');
             event.stopPropagation();
           } else if($("input[id='phone_num']").val().length < 10){
             alert('전화번호를 올바르게 입력해주세요.');
