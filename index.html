@@ -107,6 +107,34 @@
     fieldset {
       margin-top: -17px;
     }
+
+    /*radio style*/
+    .select {
+    padding: 10px 10px;
+    }
+    .select input[type=radio]{
+      display: none;
+    }
+    .select input[type=radio]+label{
+      display: inline-block;
+      cursor: pointer;
+      height: 24px;
+      width: 90px;
+      border: 1px solid #aaa;
+      line-height: 24px;
+      text-align: center;
+      font-weight:bold;
+      font-size:13px;
+    }
+    .select input[type=radio]+label{
+      background-color: #fff;
+      color: #333;
+    }
+    .select input[type=radio]:checked+label{
+      background-color: #172258c2;
+      color: #fff;
+    }
+
   </style>
 </head>
 <body>
@@ -200,12 +228,12 @@
               <tr>
                 <th scope="row"></th>
                 <td>
-                  <div>&nbsp
+                  <div class="select">
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="예" name="q1" required><label class="form-check-label">예</label> &nbsp&nbsp&nbsp
+                      <input class="form-check-input" id="select1" type="radio" value="Y" name="q1" required><label class="form-check-label" for="select1">예</label> &nbsp&nbsp&nbsp
                     </span>
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="아니오" name="q1"><label class="form-check-label">아니오</label>
+                      <input class="form-check-input" id="select2" type="radio" value="N" name="q1"><label class="form-check-label" for="select2">아니오</label>
                     </span>
                   </div>
                 </td>
@@ -220,12 +248,12 @@
               <tr>
                 <th scope="row"></th>
                 <td>
-                  <div>&nbsp
+                  <div class="select">
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="예" name="q2" required><label class="form-check-label">예</label> &nbsp&nbsp&nbsp
+                      <input class="form-check-input" id="select3" type="radio" value="Y" name="q2" required><label class="form-check-label" for="select3">예</label> &nbsp&nbsp&nbsp
                     </span>
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="아니오" name="q2"><label class="form-check-label">아니오</label>
+                      <input class="form-check-input" id="select4" type="radio" value="N" name="q2"><label class="form-check-label" for="select4">아니오</label>
                     </span>
                   </div>
                 </td>
@@ -240,12 +268,12 @@
               <tr>
                 <th scope="row"></th>
                 <td>
-                  <div>&nbsp
+                  <div class="select">
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="예" name="q3" required><label class="form-check-label">예</label> &nbsp&nbsp&nbsp
+                      <input class="form-check-input" id="select5" type="radio" value="Y" name="q3" required><label class="form-check-label" for="select5">예</label> &nbsp&nbsp&nbsp
                     </span>
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="아니오" name="q3"><label class="form-check-label">아니오</label>
+                      <input class="form-check-input" id="select6" type="radio" value="N" name="q3"><label class="form-check-label" for="select6">아니오</label>
                     </span>
                   </div>
                 </td>
@@ -260,12 +288,12 @@
               <tr>
                 <th scope="row"></th>
                 <td>
-                  <div>&nbsp
+                  <div class="select">
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="예" name="q4" required><label class="form-check-label">예</label> &nbsp&nbsp&nbsp
+                      <input class="form-check-input" id="select7" type="radio" value="Y" name="q4" required><label class="form-check-label" for="select7">예</label> &nbsp&nbsp&nbsp
                     </span>
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="아니오" name="q4"><label class="form-check-label">아니오</label>
+                      <input class="form-check-input" id="select8" type="radio" value="N" name="q4"><label class="form-check-label" for="select8">아니오</label>
                     </span>
                   </div>
                 </td>
@@ -280,12 +308,12 @@
               <tr>
                 <th scope="row"></th>
                 <td>
-                  <div>&nbsp
+                  <div class="select">
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="예" name="q5" required><label class="form-check-label">예</label> &nbsp&nbsp&nbsp
+                      <input class="form-check-input" id="select9" type="radio" value="Y" name="q5" required><label class="form-check-label" for="select9">예</label> &nbsp&nbsp&nbsp
                     </span>
                     <span class="form-check">
-                      <input class="form-check-input" type="radio" value="아니오" name="q5"><label class="form-check-label">아니오</label>
+                      <input class="form-check-input" id="select10" type="radio" value="N" name="q5"><label class="form-check-label" for="select10">아니오</label>
                     </span>
                   </div>
                 </td>
@@ -355,7 +383,7 @@
   </div>
   <footer class="my-3 text-center text-small">
     <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
-    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.14.28</span></p><br>
+    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.14.29</span></p><br>
   </footer>
   <script>
 
@@ -557,6 +585,7 @@
             fontcolor: '#000',
             image: null
           }
+          document.body.style.background = "#1abc9c";
           // Notification alert
           alert("생성된 QR코드를 확인하세요");
           // Clear QR code container
