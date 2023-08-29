@@ -217,9 +217,9 @@
               <label for="menu">도시락 선택<span style=" font: 0.85em/1em sans-serif ; color: #797979;">&nbsp;&nbsp;  * 1번 한식, 2번 양식</span></label>
               <select class="custom-select d-block w-100" id="menu" required>
                 <option value="">도시락 선택</option>
-                <option>미희망</option>
-                <option>1번 도시락</option>
-                <option>2번 도시락</option>
+                <option value="N">미희망</option>
+                <option value="1">1번 도시락</option>
+                <option vlaue="2">2번 도시락</option>
               </select>
               <div class="invalid-feedback">
                 도시락을 선택해주세요.
@@ -345,12 +345,12 @@
               <tr>
                 <th scope="row"></th>
                 <td>
-                  <div>&nbsp
+                  <div class="select">
                     <span class="form-check">
-                      <input type="radio" name="q6" id="q6Check1" value="동의" class="form-check-input" required> <label class="form-check-label" for="q6Check1">동의</label> &nbsp&nbsp&nbsp
+                      <input type="radio" name="q6" id="q6Check1" value="A" class="form-check-input" required> <label class="form-check-label" for="q6Check1">동의</label> &nbsp&nbsp&nbsp
                     </span>
                     <span class="form-check">
-                      <input type="radio" name="q6" id="q6Check2" value="미동의" class="form-check-input"> <label class="form-check-label" for="q6Check2">동의하지 않음</label>
+                      <input type="radio" name="q6" id="q6Check2" value="NA" class="form-check-input"> <label class="form-check-label" for="q6Check2">동의하지 않음</label>
                     </span>
                   </div>
                 </td>
@@ -394,7 +394,7 @@
   </div>
   <footer class="my-3 text-center text-small">
     <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
-    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.15.30</span></p><br>
+    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.15.31</span></p><br>
   </footer>
   <script>
     function handleOnInput_birth(el) {
