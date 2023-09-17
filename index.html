@@ -176,7 +176,7 @@
               <label for="birth">생년월일</label>
               <input type="number" pattern="\d*" class="form-control" id="birth" placeholder="생년월일 6자리(991230)" value="" oninput='handleOnInput_birth(this)' required>
               <div class="invalid-feedback">
-                생년월일 입력해주세요.
+                생년월일을 입력해주세요.
               </div>
             </div>
           </div>
@@ -375,7 +375,7 @@
             </div>
             <!--QR 보여줌 -->
             <br><hr class="mb-4">
-            <div class="makeqr" id="container"></div>
+              <div class="makeqr" id="container"></div>
             <!--QR설명-->
             <div class="animated-title">
               <div class="track">
@@ -394,7 +394,7 @@
   </div>
   <footer class="my-3 text-center text-small">
     <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
-    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.15.32</span></p><br>
+    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.20.33.1</span></p><br>
   </footer>
   <script>
     function handleOnInput_birth(el) {
@@ -568,8 +568,8 @@
             ecLevel: 'L',
             left: 0,
             top: 0,
-            size: 200,
-            fill: '#071a52',
+            size: 250,
+            fill: '#000000',
             background: 'white',
             text: translateKorToEng(user_name.value) + '\t'
                     + user_birth.value + '\t'
@@ -584,7 +584,7 @@
                     + translateKorToEng($("input[name='q5']:checked").val()) + '\t'
                     + translateKorToEng($("input[name='q6']:checked").val()) + '\t',
             radius: 0,
-            quiet: 0,
+            quiet: 10,
             mode: 4,
             mSize: 0.1,
             mPosX: 0.5,
