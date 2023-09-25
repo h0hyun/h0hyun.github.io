@@ -394,7 +394,7 @@
   </div>
   <footer class="my-3 text-center text-small">
     <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
-    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.20.33.1</span></p><br>
+    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.16.32</span></p><br>
   </footer>
   <script>
     function handleOnInput_birth(el) {
@@ -551,7 +551,8 @@
       var lunch_menu = document.getElementById("menu");
       $("#container").html('');
 
-      if (confirm("이름 : "+ user_name.value +"\n"+
+      if (confirm(
+              "이름 : "+ user_name.value +"\n"+
               "생년월일 : "+ user_birth.value +"\n"+
               "전화번호 : "+ phone_number.value +"\n"+
               "계좌번호 : "+ bank_number.value +"\n"+
@@ -571,9 +572,9 @@
             size: 250,
             fill: '#000000',
             background: 'white',
-            text: translateKorToEng(user_name.value) + '\t'
-                    + user_birth.value + '\t'
-                    + phone_number.value + '\t'
+            text: //translateKorToEng(user_name.value) + '\t'
+                    //+ user_birth.value + '\t'
+                    phone_number.value + '\t'
                     + "'" + bank_number.value + '\t'
                     + translateKorToEng(bank_name.value) + '\t' + '\t' //은행코드자리 넘김 추가
                     + translateKorToEng(lunch_menu.value) + '\t'
