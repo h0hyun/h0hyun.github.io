@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Demo for jQuery.qrcode (https://larsjung.de/jquery-qrcode/).">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>52사단 예비군</title>
+  <title>서초과학화예비군훈련대</title>
   <!-- QR Code Start -->
   <link href="//fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <script src="web/jquery.min.js"></script>
@@ -156,7 +156,7 @@
           <div class="content">
             &nbsp;&nbsp;예비군훈련 입소 간편화를 위해 시행하는 QR Pass 입니다.
             &nbsp;&nbsp;서버에 저장되지 않으며 기타 다른 용도로 사용되지 않습니다.
-            &nbsp;&nbsp;박달예비군훈련대
+            &nbsp;&nbsp;서초과학화예비군훈련대
           </div>
         </div>
       </div>
@@ -196,7 +196,7 @@
           </div>
           <div class="row">
             <div class="col-md-8 mb-3" id="bankBox">
-              <label for="bank_name">은행<span style=" font: 0.85em/1em sans-serif ; color: #797979;">&nbsp;  * 목록에 없을 경우 기타(직접입력)</span></label>
+              <label for="bank_name">은행<span style=" font: 0.85em/1em sans-serif ; color: #797979;">&nbsp;  * 증권사 계좌는 입력하지 마세요.</span></label>
               <select type="text" class="custom-select d-block w-100" id="bank_name" onchange="bank_input_box_func(this)" required>
                 <option value="" selected>은행 선택</option>
                 <option value="국민">국민</option>
@@ -217,9 +217,9 @@
               <label for="menu">도시락 선택<span style=" font: 0.85em/1em sans-serif ; color: #797979;">&nbsp;&nbsp;  * 1번 한식, 2번 양식</span></label>
               <select class="custom-select d-block w-100" id="menu" required>
                 <option value="">도시락 선택</option>
+                <option value="1">도시락 A</option>
+                <option value="2">도시락 B</option>
                 <option value="N">미희망</option>
-                <option value="1">1번 도시락</option>
-                <option value="2">2번 도시락</option>
               </select>
               <div class="invalid-feedback">
                 도시락을 선택해주세요.
@@ -314,7 +314,7 @@
               <tr>
                 <th scope="row" rowspan="2">5.</th>
                 <th scope="row"></th>
-                <td>오늘 몸 상태가 예비군훈련에 지장을 줍니까? (최근 피로, 건강이상 등)</td>
+                <td>오늘 몸 상태가 예비군훈련에 지장을 줍니까? (훈련이 제한되는 건강이상)</td>
               </tr>
               <tr>
                 <th scope="row"></th>
@@ -393,8 +393,9 @@
     </div>
   </div>
   <footer class="my-3 text-center text-small">
-    <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
-    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">BETA v0.16.32</span></p><br>
+    <p class="mb-1"><br><span style=" font: 1.05em sans-serif; font-weight:bold;"> &copy; 수도방위사령부 제52보병사단</span></p>
+    <p class="mb-1"><br><span style=" font: 1.03em sans-serif; font-weight:bold;">서초과학화예비군훈련대</span></p>
+    <p class="mb-1"><span style=" font: 1em/0.1em sans-serif;">v1.0.01</span></p><br>
   </footer>
   <script>
     function handleOnInput_birth(el) {
