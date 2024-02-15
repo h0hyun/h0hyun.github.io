@@ -543,6 +543,47 @@
       return res;
     }
 
+    
+    function check_quest(){
+
+      var prob = "건강이상"
+      var noprob = "정상"
+
+      if ($('input[name="quest1"]:checked').val() == "Y") {
+        return prob;
+      }
+      else if ($('input[name="quest2"]:checked').val() == "Y") {
+        return prob;
+      }
+      else if ($('input[name="quest3"]:checked').val() == "Y") {
+        return prob;
+      }
+      else if ($('input[name="quest4"]:checked').val() == "Y") {
+        return prob;
+      }
+      else if ($('input[name="quest5"]:checked').val() == "Y") {
+        return prob;
+      }
+      else {
+        return noprob;
+      }
+    }
+
+
+    function check_agree() {
+      var agree = "동의"
+      var notagree = "비동의"
+
+      if ($("input[name='q6']:checked").val() == "NA") {
+        return notagree;
+      }
+
+      else {
+        return agree;
+      }
+    }
+    
+
     function createQrCode() {
       var user_name = document.getElementById("in_name");
       var user_birth = document.getElementById("birth");
