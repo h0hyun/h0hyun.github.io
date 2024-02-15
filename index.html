@@ -573,18 +573,12 @@
             size: 250,
             fill: '#000000',
             background: 'white',
-            text: //translateKorToEng(user_name.value) + '\t'
-                    //+ user_birth.value + '\t'
-                    phone_number.value + '\t'
-                    + "'" + bank_number.value + '\t'
-                    + translateKorToEng(bank_name.value) + '\t' + '\t' //은행코드자리 넘김 추가
-                    + translateKorToEng(lunch_menu.value) + '\t'
-                    + translateKorToEng($("input[name='q1']:checked").val()) + '\t'
-                    + translateKorToEng($("input[name='q2']:checked").val()) + '\t'
-                    + translateKorToEng($("input[name='q3']:checked").val()) + '\t'
-                    + translateKorToEng($("input[name='q4']:checked").val()) + '\t'
-                    + translateKorToEng($("input[name='q5']:checked").val()) + '\t'
-                    + translateKorToEng($("input[name='q6']:checked").val()) + '\t',
+            text:
+                    translateKorToEng(bank_name.value) + '\t'
+                    + bank_number.value + '\t'
+                    + phone_number.value + '/'
+                    + translateKorToEng(check_quest()) + '/'
+                    + translateKorToEng(check_agree()),
             radius: 0,
             quiet: 10,
             mode: 4,
