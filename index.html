@@ -595,6 +595,13 @@
     // + translateKorToEng($("input[name='quest5']:checked").val()) + '\t'
     // + translateKorToEng($("input[name='q6']:checked").val()) + '\t',
 
+    // MEMO: 과학화버전 메모
+    // translateKorToEng(bank_name.value) + '\t'
+    // + bank_number.value + '\t'
+    // + translateKorToEng(check_quest()) + '/'
+    // + translateKorToEng(check_agree()) + '/'
+    // + phone_number.value,
+
     function createQrCode() {
       var user_name = document.getElementById("in_name");
       var user_birth = document.getElementById("birth");
@@ -626,11 +633,16 @@
             fill: '#000000',
             background: 'white',
             text:
-                    translateKorToEng(bank_name.value) + '\t'
-                    + bank_number.value + '\t'
-                    + translateKorToEng(check_quest()) + '/'
-                    + translateKorToEng(check_agree()) + '/'
-                    + phone_number.value,
+                phone_number.value + '\t'
+                + "'" + bank_number.value + '\t'
+                + translateKorToEng(bank_name.value) + '\t' + '\t' //은행코드자리 넘김 추가
+                + translateKorToEng(lunch_menu.value) + '\t'
+                + translateKorToEng($("input[name='quest1']:checked").val()) + '\t'
+                + translateKorToEng($("input[name='quest2']:checked").val()) + '\t'
+                + translateKorToEng($("input[name='quest3']:checked").val()) + '\t'
+                + translateKorToEng($("input[name='quest4']:checked").val()) + '\t'
+                + translateKorToEng($("input[name='quest5']:checked").val()) + '\t'
+                + translateKorToEng($("input[name='q6']:checked").val()) + '\t',
             radius: 0,
             quiet: 10,
             mode: 4,
